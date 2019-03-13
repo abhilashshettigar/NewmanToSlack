@@ -1,0 +1,18 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "reportToSlack.js",
+  "scripts": {
+    "test": "newman run ../tests/RentalQ.postman_collection.json -e ../tests/RentalQ.postman_environment.json --reporters json --reporter-json-export = ../test/results/newman-report.xml"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "dotenv": "^6.2.0",
+    "newman": "^4.4.0",
+    "newman-reporter-json-light": "^1.0.7",
+    "slack-webhook": "^1.0.0"
+  }
+}
