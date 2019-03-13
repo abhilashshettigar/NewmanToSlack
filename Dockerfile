@@ -4,9 +4,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
-
-COPY 
+COPY tests ./
 
 RUN npm install
 
-CMD [ "npm", "start" ]
+CMD [ "node", "./reportToSlack.js" ]

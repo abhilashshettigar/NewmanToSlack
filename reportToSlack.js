@@ -70,29 +70,43 @@ newman.run({
 
     } else {
       console.info('Sucess');
-      title = '<!channel> ' + 'Test Summary for APi test cases'
+      title = '<!channel> ' + 'Test Summary for APi test cases '
+      result = [
+        {
+          "type": "section",
+          "color": "good",
+          "fields": [
+            {
+              "title": "No. Of Iterations ",
+              "value": data.iterations.total,
+              "short": true
+            },
+            {
+              "title": "No. Of Requests ",
+              "value": data.requests.total,
+              "short": true
+            },
+            {
+               "title": "No. Of Assertions: ",
+              "value": data.assertions.total,
+              "short": true
+            },
+            {
+              "title": "All test are Passed :thumbsup_all:",
+             "short": true
+           }
+          ]
+        }
+      ]
+      slack.send({
+        text: title,
+        attachments: result
+      }).then(function (res) {
+        console.log(res);
 
+      }).catch(function (err) {
+        console.error(err);
+      })
     }
-
-    // title = '<!channel> ' + 'Test Summary for APi test cases'
-    // stats = {
-    //   "text": {     
-    //     "type": "mrkdwn",
-    //     "text": '`'+output+'`'
-    //   }
-    // }
-
-    // console.log(stats);
-
-    console.log('collection run completed.');
-    // slack.send({
-    //   text: title + stats
-    // }).then(function (res) {
-    //   console.log(res);
-
-    // }).catch(function (err) {
-    //   console.log(err);
-
-    // })
   }
 });
