@@ -4,10 +4,10 @@ require('dotenv').config()
 
 const SlackWebhook = require('slack-webhook')
 const slack = new SlackWebhook(process.env.SLACK_WEBHOOK_KEY)
-var newman = require('./tests/node_modules/newman'); // require('newman')
+var newman = require('newman'); // require('newman')
 newman.run({
-  collection: require('../tests/RentalQ.postman_collection.json'),
-  environment: require('../tests/RentalQ.postman_environment.json'),
+  collection: require('./tests/RentalQ.Testcases.postman_collection.json'),
+  environment: require('./tests/RentalQ.postman_environment.json'),
   reporters: 'cli'
 }).on('start', function (err, args) { // on start of run, log to console
   console.log('running a collection...');

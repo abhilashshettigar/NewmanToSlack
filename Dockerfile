@@ -2,10 +2,12 @@ FROM node:8-alpine
 
 WORKDIR /app
 
+COPY .env  ./
+
+COPY reportToSlack.js ./
+
 COPY package*.json ./
 
-COPY tests ./
+COPY tests tests
 
-RUN npm install
-
-CMD [ "node", "./reportToSlack.js" ]
+RUN npm install -g

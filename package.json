@@ -4,7 +4,7 @@
   "description": "",
   "main": "reportToSlack.js",
   "scripts": {
-    "test": "newman run ../tests/RentalQ.postman_collection.json -e ../tests/RentalQ.postman_environment.json --reporters json --reporter-json-export = ../test/results/newman-report.xml"
+    "test": "node ./reportToSlack.js"
   },
   "author": "",
   "license": "ISC",

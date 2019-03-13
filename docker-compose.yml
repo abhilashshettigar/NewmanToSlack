@@ -1,0 +1,5 @@
+version: '3'
+services:
+  slack:
+    build: .
+    command: npm run test
