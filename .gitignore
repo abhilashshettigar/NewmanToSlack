@@ -25,8 +25,8 @@ coverage
 
 # Bower dependency directory (https://bower.io/)
 bower_components
-/test/*.json
-
+/tests/RentalQ.postman_environment.json
+/tests/RentalQ.Testcases.postman_collection.json
 # node-waf configuration
 .lock-wscript
 

@@ -14,11 +14,8 @@ newman.run({
 }).on('done', function (err, summary) {
   if (summary.error) {
     console.error('collection run encountered an error.');
-    console.log(summary.error)
-    //
   } else {
     data = summary.run.stats
-    console.log(data);
     if (summary.run.failures.length > 0) {
       title = '<!channel> ' + 'Test Summary for APi test cases';
       var output = []
@@ -67,12 +64,12 @@ newman.run({
         console.log(res);
 
       }).catch(function (err) {
-        console.log(err);
+        console.error(err);
 
       })
 
     } else {
-      console.log('Sucess');
+      console.info('Sucess');
       title = '<!channel> ' + 'Test Summary for APi test cases'
 
     }
