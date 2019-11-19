@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.422.0",
-    "dotenv": "^6.2.0",
     "httpclient": "^0.1.0",
     "moment": "^2.24.0",
     "newman": "^4.4.0",
@@ -21,5 +20,8 @@
     "newman-reporter-htmlextra": "^1.6.6",
     "rimraf": "^2.6.3",
     "slack-webhook": "^1.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0"
   }
 }

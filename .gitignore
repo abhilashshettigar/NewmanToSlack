@@ -27,6 +27,8 @@ coverage
 bower_components
 /tests/RentalQ.postman_environment.json
 /tests/RentalQ.Testcases.postman_collection.json
+/tests/Restful_Booker_Environment.json
+/tests/Restful_Booker_Collection.json
 # node-waf configuration
 .lock-wscript
 

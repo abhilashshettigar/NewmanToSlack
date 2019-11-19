@@ -1,15 +1,16 @@
+require('dotenv').config()
 const fs = require('fs');
 const path = require('path');
 const AWS = require('aws-sdk');
 
 function uploadToS3(file, name, type) {
   const s3bucket = new AWS.S3({
-    accessKeyId:'xxxxxxxxxxxxxxxxxxxxxxx',
-    secretAccessKey:'xxxxxxxxxxxxxxxxxxxxxxx',
-    Bucket:'xxxxxxxxxxxxxxxxxxxxxxxxxx'
+    accessKeyId:process.env.AWS_ACESS_KEY,
+    secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY,
+    Bucket:process.env.BUCKET_NAME
   });
   const params = {
-    Bucket:'xxxxxxxxxxxxxxxxxxxxxx',
+    Bucket:process.env.BUCKET_NAME,
     Key: name,
     Body: file,
     ACL: 'public-read',
@@ -18,6 +19,7 @@ function uploadToS3(file, name, type) {
   s3bucket.upload(params, (err, data) => {
     if (err) throw err;
     /* eslint-disable no-console */
+    console.log('AccessKey',process.env.AWS_ACESS_KEY)
     console.log('Success!');
     console.log(data);
     /* eslint-enable no-console */
@@ -54,6 +56,7 @@ function uploadReport() {
       console.error('error', err)
     } else {
       console.info('data', data)
+      console.log('AccessKey',process.env.AWS_ACESS_KEY)
     }
     uploadToS3(data, report.name, report.type);
   });
@@ -62,4 +65,3 @@ function uploadReport() {
 module.exports = {
   uploadReport
 }
-// uploadReport();

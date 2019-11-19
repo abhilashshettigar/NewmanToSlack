@@ -1,14 +1,10 @@
-const rimraf =  require('rimraf')
-
-const path = require('path')
-
-const moment =  require('moment');
-
-const upload = require('./upload.js');
-
-const newman = require('newman');
-
 require('dotenv').config()
+
+const rimraf =  require('rimraf')
+const path = require('path')
+const moment =  require('moment');
+const upload = require('./upload.js');
+const newman = require('newman');
 
 const SlackWebhook = require('slack-webhook');
 const slack = new SlackWebhook(process.env.SLACK_WEBHOOK_KEY);
@@ -22,8 +18,8 @@ let bucketName = 'testtrtnewman'
 let s3ObjectURL = 'https://s3.us-east-2.amazonaws.com/'+bucketName+'/'+res
 
 newman.run({
-  collection: require('./tests/RentalQ.Testcases.postman_collection.json'),
-  environment: require('./tests/RentalQ.postman_environment.json'),
+  collection: require('./tests/PostmanEcho.postman_collection.json'),
+  environment: require('./tests/PostmanEnvironment.postman_environment.json'),
   reporters:  ['cli', 'htmlextra'],
   reporter: {
     htmlextra: {
