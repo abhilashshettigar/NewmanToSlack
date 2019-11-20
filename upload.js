@@ -48,7 +48,7 @@ function uploadReport() {
     if (err) {
       console.error('error', err)
     } else {
-      console.info('data', data)
+      console.info('Report Uploading...')
     }
     uploadToS3(data, report.name, report.type);
   });
