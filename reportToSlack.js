@@ -13,9 +13,8 @@ let stats
 
 const exportPath = './reports/index-'+moment().format("dddd-MMMM-Do-YYYY-h-mm-ss-a")+'.html';
 var res = exportPath.slice(10, 55);
-let bucketName = 'testtrtnewman'
 
-let s3ObjectURL = 'https://s3.us-east-2.amazonaws.com/'+bucketName+'/'+res
+let s3ObjectURL = `https://newmanreports.s3.ap-south-1.amazonaws.com/${res}.html`;
 
 newman.run({
   collection: require('./tests/PostmanEcho.postman_collection.json'),
@@ -80,17 +79,13 @@ newman.run({
         text: title,
         attachments: result
       }).then(function (res) {
-        console.log(res);
-
+        console.info(res)
       }).catch(function (err) {
         console.error(err);
-
       })
     upload.uploadReport()
-      console.log('Report Uploaded successfully')
       rimraf(path.join(__dirname, '.', 'reports'), () => {});
     } else {
-      console.info('Sucess');
       title = '<!channel> ' + 'Test Summary for APi test cases ' + 'For HTML reports click on link:-' +s3ObjectURL;
       result = [
         {
@@ -124,12 +119,10 @@ newman.run({
         attachments: result
       }).then(function (res) {
         console.log(res);
-
       }).catch(function (err) {
         console.error(err);
       })
       upload.uploadReport();
-      console.log('Report Uploaded successfully')
       rimraf(path.join(__dirname, '.', 'reports'), () => {});
     }
   }

@@ -18,11 +18,6 @@ function uploadToS3(file, name, type) {
   };
   s3bucket.upload(params, (err, data) => {
     if (err) throw err;
-    /* eslint-disable no-console */
-    console.log('AccessKey',process.env.AWS_ACESS_KEY)
-    console.log('Success!');
-    console.log(data);
-    /* eslint-enable no-console */
   });
 }
 
@@ -48,15 +43,12 @@ function getFiles(dir, fileList = []) {
 
 function uploadReport() {
   const reportsDir = path.join(__dirname, '.', 'reports');
-  console.log('Dir------------------', reportsDir);
   const report = getFiles(reportsDir, [])[0];
-  console.log('Report------------------', report);
   fs.readFile(report.path, (err, data) => {
     if (err) {
       console.error('error', err)
     } else {
       console.info('data', data)
-      console.log('AccessKey',process.env.AWS_ACESS_KEY)
     }
     uploadToS3(data, report.name, report.type);
   });
