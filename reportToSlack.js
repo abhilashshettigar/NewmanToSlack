@@ -17,8 +17,8 @@ var res = exportPath.slice(10, 55);
 let s3ObjectURL = `https://newmanreports.s3.ap-south-1.amazonaws.com/${res}.html`;
 
 newman.run({
-  collection: require('./tests/PostmanEcho.postman_collection.json'),
-  environment: require('./tests/PostmanEnvironment.postman_environment.json'),
+  collection: require('./tests/PostmanEcho.postman_collection.json'), //Add Postman collection path here
+  environment: require('./tests/PostmanEnvironment.postman_environment.json'), //Add postman enviroment file path here 
   reporters:  ['cli', 'htmlextra'],
   reporter: {
     htmlextra: {
@@ -127,4 +127,3 @@ newman.run({
     }
   }
 });
-//Get S3 URL from butcket and display URL in Slack
