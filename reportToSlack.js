@@ -11,8 +11,8 @@ const slack = new SlackWebhook(process.env.SLACK_WEBHOOK_KEY);
 let title
 let stats
 
-const exportPath = './reports/index-'+moment().format("dddd-MMMM-Do-YYYY-h-mm-ss-a")+'.html';
-var res = exportPath.slice(10, 55);
+const exportPath = './reports/index-'+moment().format("ddd-MMM-Do-YYYY-h-mm-ss-a")+'.html';
+var res = exportPath.slice(10, 44);
 
 let s3ObjectURL = `https://newmanreports.s3.ap-south-1.amazonaws.com/${res}.html`;
 
