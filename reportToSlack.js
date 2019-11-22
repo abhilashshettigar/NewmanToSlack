@@ -14,9 +14,6 @@ let stats
 const exportPath = './reports/index-'+moment().format("ddd-MMM-DD-YYYY-hh-mm-ss-a")+'.html';
 var res = exportPath.slice(10, 43);
 let s3ObjectURL = `https://newmanreports.s3.ap-south-1.amazonaws.com/${res}.html`;
-console.log(res)
-console.log(s3ObjectURL)
-console.log(exportPath)
 
 newman.run({
   collection: require('./tests/PostmanEcho.postman_collection.json'), //Add Postman collection path here
